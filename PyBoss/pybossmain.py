@@ -19,8 +19,11 @@ with open(csvpath, newline='') as filehandle:
     Last_Name = []
 #create a list to hold DOBs (in order)
     DOB = []
+#create a list to hold SSNs
     SSN = []
+#create a list to hold new SSNs (in order)
     new_SSN = []
+#-------------------------------------------------------------------------------------------------------
     State_Abrev = []
     Name = []
 
@@ -35,7 +38,7 @@ with open(csvpath, newline='') as filehandle:
         SSN = row[3].split("-")
 #Set new_ssn list equal to the concatenation of the new format and the third values in the SSN list (in order)
         new_SSN.append("***-**-" + SSN[2])
-#append emp ids in order
+#append emp ids (in order)
         Emp_Id.append(row[0])
 #append DOBs (in order)
         DOB.append(row[2])
@@ -52,11 +55,19 @@ with open(csvpath, newline='') as filehandle:
         for y in us_state_abbrev:
             if row[4] == y:
                 State_Abrev.append(us_state_abbrev[y])
- 
+#----------------------------------------------------------------------------------------------------------------------------------------
+#Dates seem to be already reformatted for me, but if they werent you could do the following to format:
+    New_DOBs = []
+    for i in DOB:
+        date_parts = i.split("-")
+        New_dates = "/".join(date_parts)
+        New_DOBs.append(New_dates)
 
 
 
-edit_data = zip(Emp_Id, First_Name, Last_Name, DOB, new_SSN, State_Abrev)
+
+
+edit_data = zip(Emp_Id, First_Name, Last_Name, New_DOBs, new_SSN, State_Abrev)
 
 output_file = os.path.join("new_employee_data.csv")
 
