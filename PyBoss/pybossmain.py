@@ -60,9 +60,9 @@ with open(csvpath, newline='') as filehandle:
     New_DOBs = []
     for i in DOB:
         date_parts = i.split("-")
-        New_dates = "/".join(date_parts)
+        New_dates = date_parts[1] + "/" + date_parts[2] + "/" + date_parts[0]
         New_DOBs.append(New_dates)
-
+ 
 
 
 
