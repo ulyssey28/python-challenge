@@ -46,23 +46,9 @@ with open(filepath, 'r') as filehandle:
     num_of_sentences = len(Sentences)
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 #Finding average letters per word:
-#Creat a list that will hold all characters
-    Characterlist = []
-#create a list that will hold all alphabet characters
-    Alpha_character_list = []
-#Loop through words in word list, then split each into a list of its characters.
-    for i in words:
-        mylist = list(i)
-#for every character in a word, append characters to character list  
-        for t in mylist:
-            Characterlist.append(t)
-#Loop through characters in characters list and if a character satisfies .isalpa() then append character to Alpha_character_list
-    for z in Characterlist:
-        if z.isalpha():
-            Alpha_character_list.append(z)
+    Alpha_character_list = re.findall("[a-zA-Z]", paragraph_string)
 #Total letter count will be equal to the length of the Alpha_character_list
     Total_letter_count = len(Alpha_character_list)
-
     Average_letter_count = Total_letter_count / Total_wordcount
 #--------------------------------------------------------------------------------------------------------------------------------------------------
 #Finding Average Sentence Length:
